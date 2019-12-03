@@ -64,10 +64,6 @@ module.exports = {
       })
       .end()
 
-    if (env.NODE_ENV === 'production') {
-      config.plugin('webpack-bundle-analyzer').use(BundleAnalyzerPlugin)
-    }
-
     if (env.VUE_APP_RUNTIME_ENV === 'production') {
       const imageRule = config.module.rule('images')
       imageRule.uses.clear()
