@@ -11,6 +11,5 @@ git add -A
 git commit -m 'deploy'
 git push -f git@github.com:lost-dream/front-end-demo.git master
 
-git rm --cached dist
-
-cd -
+cd ..
+rm -rf dist
