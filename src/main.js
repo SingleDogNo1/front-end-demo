@@ -5,6 +5,7 @@ import store from './store'
 /* css support */
 import 'normalize.css'
 import '@/assets/css/reset.css'
+import '@/assets/css/common.scss'
 
 // js vendors && plugins
 import './plugins/element.js'

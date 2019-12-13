@@ -106,6 +106,8 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+$dotSize: 35px;
+$color: #666;
 .digital-clock {
   display: flex;
   justify-content: center;
@@ -115,13 +117,13 @@ export default {
     justify-content: center;
     align-items: center;
     .number {
-      @include cube(150px);
+      @include cube($dotSize * 3);
       margin: 0 20px;
       display: flex;
       flex-wrap: wrap;
       .rect {
-        @include square(50px);
-        background: #333;
+        @include square($dotSize);
+        background: $color;
         border: 2px solid transparent;
         border-right-color: #fff;
         border-bottom-color: #fff;
@@ -134,15 +136,15 @@ export default {
     }
   }
   .flash-dot {
-    @include cube(50px, 250px);
-    padding: 50px 0;
-    margin: 0 50px;
+    @include cube($dotSize, $dotSize * 5);
+    padding: $dotSize 0;
+    margin: 0 $dotSize;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     div {
-      @include square(50px);
-      background: #333;
+      @include square($dotSize);
+      background: $color;
       border: 2px solid transparent;
       border-right-color: #fff;
       border-bottom-color: #fff;

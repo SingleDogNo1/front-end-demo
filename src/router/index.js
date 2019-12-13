@@ -1,6 +1,9 @@
 import Layout from '@/layout'
 
 import notFound from './404'
+import cssRouter from './cssPart'
+import jsRouter from './jsPart'
+import allRouter from './all'
 
 Vue.use(VueRouter)
 
@@ -15,23 +18,7 @@ const routes = [
         name: 'home',
         redirect: 'home/cube',
         component: () => import(/* webpackChunkName: 'home' */ '@/views/Home'),
-        children: [
-          {
-            path: 'digital-clock',
-            name: 'DigitalClock',
-            component: () => import(/* Digital clock */ '@/views/DigitalClock')
-          },
-          {
-            path: 'cube',
-            name: 'cube',
-            component: () => import(/* Digital clock */ '@/views/Cube')
-          },
-          {
-            path: 'animation-text',
-            name: 'cube',
-            component: () => import(/* Digital clock */ '@/views/Cube')
-          }
-        ]
+        children: [...cssRouter, ...jsRouter, ...allRouter]
       }
     ]
   },

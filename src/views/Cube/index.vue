@@ -13,13 +13,17 @@ export default {
     return {
       direction: ['front', 'back', 'left', 'right', 'top', 'bottom']
     }
-  },
+  }
 }
 </script>
 <style scoped lang="scss">
 @keyframes rotate {
-  from { transform: rotate3d(1,1,1,0deg) }
-  to { transform: rotate3d(1, 1, 1, 360deg) }
+  from {
+    transform: rotate3d(1, 1, 1, 0deg);
+  }
+  to {
+    transform: rotate3d(1, 1, 1, 360deg);
+  }
 }
 
 .cube-container {
@@ -62,7 +66,7 @@ export default {
       position: absolute;
       @include square(100px);
       border: 1px solid black;
-      background: url(./demo.jpg) center 0/contain no-repeat;
+      background: url(./demo.jpg) center 0 / contain no-repeat;
       top: 50px;
       left: 50px;
       transition: all 1.5s ease;

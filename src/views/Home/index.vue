@@ -52,8 +52,7 @@ $footer-height: 60px;
   height: $header-height;
   line-height: $header-height;
   text-align: center;
-  color: #fff;
-  background: #333;
+  background: #eee;
 }
 
 .inner {
@@ -78,7 +77,6 @@ $footer-height: 60px;
   height: $footer-height;
   line-height: $footer-height;
   text-align: center;
-  color: #fff;
-  background: #333;
+  background: #eee;
 }
 </style>
