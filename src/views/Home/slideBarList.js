@@ -17,6 +17,14 @@ const slideBarList = [
       {
         title: 'css 翻转',
         routerName: 'cssFlip'
+      },
+      {
+        title: 'loading加载动画',
+        routerName: 'loading'
+      },
+      {
+        title: '扇形目录',
+        routerName: 'FanShapedMenu'
       }
     ]
   },
@@ -24,7 +32,8 @@ const slideBarList = [
     template: 'js',
     list: [
       {
-        title: 'js选项1'
+        title: 'vue 实现的计算器',
+        routerName: 'calculator'
       }
     ]
   },
@@ -34,6 +43,10 @@ const slideBarList = [
       {
         title: '数字时钟',
         routerName: 'DigitalClock'
+      },
+      {
+        title: '跟随鼠标的3d滑块效果',
+        routerName: 'jsCube'
       },
       {
         title: 'css3 + js 文字动画',

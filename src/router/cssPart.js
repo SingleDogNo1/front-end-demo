@@ -18,6 +18,16 @@ const cssRouter = [
     path: 'flip',
     name: 'cssFlip',
     component: () => import(/* webpackChunkName: 'flip' */ '@/views/CssFlip')
+  },
+  {
+    path: 'loading',
+    name: 'loading',
+    component: () => import(/* webpackChunkName: 'loading' */ '@/views/Loading')
+  },
+  {
+    path: 'fan-shaped-menu',
+    name: 'FanShapedMenu',
+    component: () => import(/* webpackChunkName: 'FanShapedMenu' */ '@/views/FanShapedMenu')
   }
 ]
 export default cssRouter

@@ -57,7 +57,7 @@ $height: 300px;
       }
       .back {
         transform: rotateY(180deg);
-        background: linear-gradient(top, #fdbb5a, #db5726);
+        background: linear-gradient(to bottom, #fdbb5a, #db5726);
         @include cube();
         color: white;
         font-size: 24px;

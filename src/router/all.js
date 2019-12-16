@@ -13,6 +13,11 @@ const allRouter = [
     path: 'grid',
     name: 'draggableGrid',
     component: () => import(/* webpackChunkName: 'draggableGrid' */ '@/views/DraggableGrid')
+  },
+  {
+    path: 'js-cube',
+    name: 'jsCube',
+    component: () => import(/* webpackChunkName: 'js-cube' */ '@/views/JSCube')
   }
 ]
 export default allRouter
