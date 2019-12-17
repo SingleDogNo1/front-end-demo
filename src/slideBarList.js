@@ -3,6 +3,10 @@ const slideBarList = [
     template: 'css3',
     list: [
       {
+        title: 'css3 属性练习',
+        routerName: 'cssTest'
+      },
+      {
         title: '3d立方体',
         routerName: 'cube'
       },
@@ -51,10 +55,19 @@ const slideBarList = [
       {
         title: 'css3 + js 文字动画',
         routerName: 'animationText'
-      },
+      }
+    ]
+  },
+  {
+    template: 'vue功能',
+    list: [
       {
         title: '可拖放的布局',
         routerName: 'draggableGrid'
+      },
+      {
+        title: '跟随鼠标的遮罩层',
+        routerName: 'directionReveal'
       }
     ]
   }

@@ -18,6 +18,11 @@ const allRouter = [
     path: 'js-cube',
     name: 'jsCube',
     component: () => import(/* webpackChunkName: 'js-cube' */ '@/views/JSCube')
+  },
+  {
+    path: 'direction-reveal',
+    name: 'directionReveal',
+    component: () => import(/* webpackChunkName: 'direction-reveal' */ '@/views/DirectionReveal')
   }
 ]
 export default allRouter

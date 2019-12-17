@@ -16,7 +16,7 @@ const routes = [
       {
         path: 'home',
         name: 'home',
-        redirect: 'home/cube',
+        redirect: 'home/css-test',
         component: () => import(/* webpackChunkName: 'home' */ '@/views/Home'),
         children: [...cssRouter, ...jsRouter, ...allRouter]
       }

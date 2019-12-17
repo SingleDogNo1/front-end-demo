@@ -35,7 +35,6 @@
 <script>
 export default {
   name: 'calculator',
-  components: {},
   data() {
     return {
       commonKey: [

@@ -1,5 +1,10 @@
 const cssRouter = [
   {
+    path: 'css-test',
+    name: 'cssTest',
+    component: () => import(/* webpackChunkName: 'cssTest' */ '@/views/CssTest')
+  },
+  {
     path: 'cube',
     name: 'cube',
     component: () => import(/* webpackChunkName: 'cube' */ '@/views/Cube')
