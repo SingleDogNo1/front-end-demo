@@ -68,7 +68,7 @@ export default {
         'cos',
         'tan',
         'x^',
-        '&le;',
+        '<=',
         'C',
         'log',
         'ln',
