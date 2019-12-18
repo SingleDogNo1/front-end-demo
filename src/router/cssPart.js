@@ -33,6 +33,11 @@ const cssRouter = [
     path: 'fan-shaped-menu',
     name: 'FanShapedMenu',
     component: () => import(/* webpackChunkName: 'FanShapedMenu' */ '@/views/FanShapedMenu')
+  },
+  {
+    path: 'font-animate',
+    name: 'fontAnimate',
+    component: () => import(/* webpackChunkName: 'fontAnimate' */ '@/views/FontAnimate')
   }
 ]
 export default cssRouter

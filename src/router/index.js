@@ -1,6 +1,7 @@
 import Layout from '@/layout'
 
 import notFound from './404'
+import htmlRouter from './htmlPart'
 import cssRouter from './cssPart'
 import jsRouter from './jsPart'
 import allRouter from './all'
@@ -18,7 +19,7 @@ const routes = [
         name: 'home',
         redirect: 'home/css-test',
         component: () => import(/* webpackChunkName: 'home' */ '@/views/Home'),
-        children: [...cssRouter, ...jsRouter, ...allRouter]
+        children: [...htmlRouter, ...cssRouter, ...jsRouter, ...allRouter]
       }
     ]
   },

@@ -1,5 +1,14 @@
 const slideBarList = [
   {
+    template: 'html5',
+    list: [
+      {
+        title: 'html5原生拖拽',
+        routerName: 'html5Draggable'
+      }
+    ]
+  },
+  {
     template: 'css3',
     list: [
       {
@@ -29,6 +38,10 @@ const slideBarList = [
       {
         title: '扇形目录',
         routerName: 'FanShapedMenu'
+      },
+      {
+        title: '几种文字出现的效果',
+        routerName: 'fontAnimate'
       }
     ]
   },
@@ -49,8 +62,12 @@ const slideBarList = [
         routerName: 'DigitalClock'
       },
       {
-        title: '跟随鼠标的3d滑块效果',
+        title: '跟随鼠标的遮罩（一）',
         routerName: 'jsCube'
+      },
+      {
+        title: '跟随鼠标的遮罩（二）',
+        routerName: 'directionReveal'
       },
       {
         title: 'css3 + js 文字动画',
@@ -59,15 +76,11 @@ const slideBarList = [
     ]
   },
   {
-    template: 'vue功能',
+    template: 'vue功能插件',
     list: [
       {
         title: '可拖放的布局',
         routerName: 'draggableGrid'
-      },
-      {
-        title: '跟随鼠标的遮罩层',
-        routerName: 'directionReveal'
       }
     ]
   }
