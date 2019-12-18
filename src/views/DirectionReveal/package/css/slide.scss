@@ -1,0 +1,56 @@
+@import './mixins.scss';
+@include initStyle(slide);
+
+.direction-reveal [class*='slide--'] .direction-reveal__anim--enter,
+.direction-reveal [class*='slide--'] .direction-reveal__anim--leave {
+  transform: translate3d(0, 0, 0);
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes slide--enter-top {
+  0% {
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+@keyframes slide--leave-top {
+  100% {
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+@keyframes slide--enter-bottom {
+  0% {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+@keyframes slide--leave-bottom {
+  100% {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+@keyframes slide--enter-left {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes slide--leave-left {
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes slide--enter-right {
+  0% {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+@keyframes slide--leave-right {
+  100% {
+    transform: translate3d(100%, 0, 0);
+  }
+}

@@ -1,0 +1,64 @@
+@import './mixins.scss';
+@include initStyle(flip);
+
+.direction-reveal [class*='flip--'] {
+  perspective: 800px;
+  overflow: visible;
+}
+
+.direction-reveal [class*='flip--'] .direction-reveal__anim--enter, .direction-reveal [class*='flip--'] .direction-reveal__anim--leave {
+  transform: rotateX(0) rotateY(0);
+  animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  animation-duration: 1.2s;
+  backface-visibility: hidden;
+  z-index: 1;
+}
+
+@keyframes flip--enter-top {
+  0% {
+    transform: rotateX(180deg) rotateY(0);
+  }
+}
+
+
+@keyframes flip--leave-top {
+  100% {
+    transform: rotateX(180deg) rotateY(0);
+  }
+}
+
+@keyframes flip--enter-bottom {
+  0% {
+    transform: rotateX(-180deg) rotateY(0);
+  }
+}
+
+@keyframes flip--leave-bottom {
+  100% {
+    transform: rotateX(-180deg) rotateY(0);
+  }
+}
+
+@keyframes flip--enter-left {
+  0% {
+    transform: rotateX(0) rotateY(-180deg);
+  }
+}
+
+@keyframes flip--leave-left {
+  100% {
+    transform: rotateX(0) rotateY(-180deg);
+  }
+}
+
+@keyframes flip--enter-right {
+  0% {
+    transform: rotateX(0) rotateY(180deg);
+  }
+}
+
+@keyframes flip--leave-right {
+  100% {
+    transform: rotateX(0) rotateY(180deg);
+  }
+}

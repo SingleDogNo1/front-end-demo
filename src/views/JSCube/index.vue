@@ -1,11 +1,11 @@
 <template>
   <ul class="js-cube">
     <li v-for="index in 10" :key="index">
-      <div class="active-item">
+      <div class="direction-reveal__card">
         <div class="front">
           <img src="./1.jpg" />
         </div>
-        <div class="back">
+        <div class="overlay">
           <h3>Hello, World!</h3>
         </div>
       </div>
@@ -42,10 +42,10 @@ export default {
         this.t = this.element.offsetTop
       }
       mouseEnterHandler(ev) {
-        this.addClass(ev, 'in')
+        this.addClass(ev, 'enter')
       }
       mouseOutHandler(ev) {
-        this.addClass(ev, 'out')
+        this.addClass(ev, 'leave')
       }
       addClass(ev, state) {
         const direction = this.getDirection(ev)
@@ -65,7 +65,7 @@ export default {
             break
         }
         this.element.className = ''
-        this.element.classList.add(state + class_suffix)
+        this.element.classList.add(`cube--${state}${class_suffix}`)
       }
       getDirection(ev) {
         const RADIAN_TO_ANGLE = 1.57079633
@@ -94,7 +94,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@keyframes in-top {
+@keyframes cube--enter-top {
   from {
     transform: rotate3d(0, 0, 0, 0deg);
   }
@@ -103,7 +103,7 @@ export default {
   }
 }
 
-@keyframes out-top {
+@keyframes cube--leave-top {
   from {
     transform: rotate3d(-1, 0, 0, 90deg);
   }
@@ -112,7 +112,7 @@ export default {
   }
 }
 
-@keyframes in-right {
+@keyframes cube--enter-right {
   from {
     transform: rotate3d(0, 0, 0, 0deg);
   }
@@ -121,7 +121,7 @@ export default {
   }
 }
 
-@keyframes out-right {
+@keyframes cube--leave-right {
   from {
     transform: rotate3d(0, -1, 0, 90deg);
   }
@@ -130,7 +130,7 @@ export default {
   }
 }
 
-@keyframes in-bottom {
+@keyframes cube--enter-bottom {
   from {
     transform: rotate3d(0, 0, 0, 0deg);
   }
@@ -139,7 +139,7 @@ export default {
   }
 }
 
-@keyframes out-bottom {
+@keyframes cube--leave-bottom {
   from {
     transform: rotate3d(1, 0, 0, 90deg);
   }
@@ -148,7 +148,7 @@ export default {
   }
 }
 
-@keyframes in-left {
+@keyframes cube--enter-left {
   from {
     transform: rotate3d(0, 0, 0, 0deg);
   }
@@ -157,7 +157,7 @@ export default {
   }
 }
 
-@keyframes out-left {
+@keyframes cube--leave-left {
   from {
     transform: rotate3d(0, 1, 0, 90deg);
   }
@@ -176,7 +176,7 @@ $size: 180px;
     display: inline-block;
     transform-origin: 50% 50% $size / 2;
   }
-  .active-item {
+  .direction-reveal__card {
     @include positionCenter;
     pointer-events: none;
     transform-style: preserve-3d;
@@ -184,7 +184,7 @@ $size: 180px;
     will-change: transform;
     animation: 200ms ease-out 0ms 1 normal forwards paused;
     .front,
-    .back {
+    .overlay {
       @include positionCenter;
       color: white;
       transition: none;
@@ -192,11 +192,8 @@ $size: 180px;
     .front {
       overflow: hidden;
       transform: translate3d(0, 0, 0);
-      img {
-        width: 100%;
-      }
     }
-    .back {
+    .overlay {
       background: linear-gradient(to bottom, #fdbb5a, #db5726);
       color: #fff;
       transform: translate3d(0, 0, -1px);
@@ -206,33 +203,34 @@ $size: 180px;
     }
   }
 
-  .in-top .back,
-  .out-top .back {
+  .cube--enter-top .overlay,
+  .cube--leave-top .overlay {
     transform-origin: 0% 100%;
     transform: translate3d(0, -100%, 0) rotate3d(1, 0, 0, 90deg);
   }
 
-  .in-right .back,
-  .out-right .back {
+  .cube--enter-right .overlay,
+  .cube--leave-right .overlay {
     transform-origin: 0% 0%;
     transform: translate3d(100%, 0, 0) rotate3d(0, 1, 0, 90deg);
   }
 
-  .in-bottom .back,
-  .out-bottom .back {
+  .cube--enter-bottom .overlay,
+  .cube--leave-bottom .overlay {
     transform-origin: 0% 0%;
     transform: translate3d(0, 100%, 0) rotate3d(-1, 0, 0, 90deg);
   }
 
-  .in-left .back,
-  .out-left .back {
+  .cube--enter-left .overlay,
+  .cube--leave-left .overlay {
     transform-origin: 100% 0;
     transform: translate3d(-100%, 0, 0) rotate3d(0, -1, 0, 90deg);
   }
 
-  $class-list: in-top, in-right, in-bottom, in-left, out-top, out-right, out-bottom, out-left;
+  $class-list: cube--enter-top, cube--enter-right, cube--enter-bottom, cube--enter-left,
+    cube--leave-top, cube--leave-right, cube--leave-bottom, cube--leave-left;
   @each $value in $class-list {
-    .#{$value} .active-item {
+    .#{$value} .direction-reveal__card {
       animation-name: #{$value};
       animation-play-state: running;
     }

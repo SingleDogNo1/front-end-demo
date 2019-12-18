@@ -1,0 +1,39 @@
+@import './css/swing.scss';
+@import './css/slide.scss';
+@import './css/rollout.scss';
+@import './css/rotate.scss';
+@import './css/flip.scss';
+
+.direction-reveal {
+  .direction-reveal__card {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+  }
+  :not([class*='flip--']) .overlay {
+    background: rgba(0,0,0,0.7);
+  }
+  [class*='flip--'] .overlay {
+    background: #666;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 16px;
+    color: #fff;
+    overflow: hidden;
+  }
+}
+
+.direction-reveal__anim--enter, .direction-reveal__anim--leave {
+  animation-duration: 0.6s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation-fill-mode: forwards;
+}
+
+.direction-reveal__anim--enter {
+  transform: translate3d(0, -100%, 0);
+}

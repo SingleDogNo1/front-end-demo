@@ -1,0 +1,56 @@
+@import './mixins.scss';
+@include initStyle(roll-out);
+
+.direction-reveal [class*='roll-out--'] .direction-reveal__anim--enter, .direction-reveal [class*='roll-out--'] .direction-reveal__anim--leave {
+  transform: translate3d(0, 0, 0);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes roll-out--enter-top {
+  0% {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+}
+
+@keyframes roll-out--leave-top {
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+}
+
+@keyframes roll-out--enter-bottom {
+  0% {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes roll-out--leave-bottom {
+  100% {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes roll-out--enter-left {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+}
+
+@keyframes roll-out--leave-left {
+  100% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+}
+
+@keyframes roll-out--enter-right {
+  0% {
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+  }
+}
+
+@keyframes roll-out--leave-right {
+  100% {
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+  }
+}

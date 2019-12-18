@@ -1,0 +1,39 @@
+$directions: top, bottom, left, right;
+
+@mixin initStyle($name) {
+  @each $direction in $directions {
+    .#{$name}--enter-#{$direction} {
+      .direction-reveal__anim--enter {
+        animation-name: #{$name}--enter-#{$direction};
+      }
+      .direction-reveal__anim--leave {
+        @if $direction == top {
+          animation-name: #{$name}--leave-bottom;
+        } @else if $direction == bottom {
+          animation-name: #{$name}--leave-top;
+        } @else if $direction == left {
+          animation-name: #{$name}--leave-right;
+        } @else if $direction == right {
+          animation-name: #{$name}--leave-left;
+        }
+      }
+    }
+    .#{$name}--leave-#{$direction} {
+      .direction-reveal__anim--enter {
+        animation-name: #{$name}--leave-#{$direction};
+      }
+      .direction-reveal__anim--leave {
+        @if $direction == top {
+          animation-name: #{$name}--enter-bottom;
+        } @else if $direction == bottom {
+          animation-name: #{$name}--enter-top;
+        } @else if $direction == left {
+          animation-name: #{$name}--enter-right;
+        } @else if $direction == right {
+          animation-name: #{$name}--enter-left;
+        }
+      }
+    }
+  }
+}
+

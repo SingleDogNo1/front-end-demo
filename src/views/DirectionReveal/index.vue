@@ -184,7 +184,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import './package/css/direction-reveal.scss';
+@import './package/direction-reveal.scss';
 
 .direction-wrapper {
   padding-top: 30px;

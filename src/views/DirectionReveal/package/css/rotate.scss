@@ -1,0 +1,84 @@
+@import './mixins.scss';
+@include initStyle(rotate);
+
+.direction-reveal [class*='rotate--'] .direction-reveal__anim--enter,
+.direction-reveal [class*='rotate--'] .direction-reveal__anim--leave {
+  transform: rotate(0);
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.rotate--enter-top .direction-reveal__anim--enter,
+.rotate--enter-top .direction-reveal__anim--leave,
+.rotate--leave-top .direction-reveal__anim--enter,
+.rotate--leave-top .direction-reveal__anim--leave {
+  transform-origin: left top;
+}
+
+.rotate--enter-bottom .direction-reveal__anim--enter,
+.rotate--enter-bottom .direction-reveal__anim--leave,
+.rotate--leave-bottom .direction-reveal__anim--enter,
+.rotate--leave-bottom .direction-reveal__anim--leave {
+  transform-origin: left bottom;
+}
+
+.rotate--enter-left .direction-reveal__anim--enter,
+.rotate--enter-left .direction-reveal__anim--leave,
+.rotate--leave-left .direction-reveal__anim--enter,
+.rotate--leave-left .direction-reveal__anim--leave {
+  transform-origin: left top;
+}
+
+.rotate--enter-right .direction-reveal__anim--enter,
+.rotate--enter-right .direction-reveal__anim--leave,
+.rotate--leave-right .direction-reveal__anim--enter,
+.rotate--leave-right .direction-reveal__anim--leave {
+  transform-origin: right top;
+}
+
+@keyframes rotate--enter-top {
+  0% {
+    transform: rotate(-90deg);
+  }
+}
+
+@keyframes rotate--leave-top {
+  100% {
+    transform: rotate(-90deg);
+  }
+}
+
+@keyframes rotate--enter-bottom {
+  0% {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes rotate--leave-bottom {
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes rotate--enter-left {
+  0% {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes rotate--leave-left {
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes rotate--enter-right {
+  0% {
+    transform: rotate(-90deg);
+  }
+}
+
+@keyframes rotate--leave-right {
+  100% {
+    transform: rotate(-90deg);
+  }
+}
