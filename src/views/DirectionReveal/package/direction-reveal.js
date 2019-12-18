@@ -2,13 +2,13 @@
   Direction aware content reveals.
 
   @param {Object} object - Container for all options.
-  @param {string} selector - Container element selector.
-  @param {string} itemSelector - Item element selector.
-  @param {string} animationName - Animation CSS class.
-  @param {string} animationPostfixEnter - Animation CSS class postfix for enter event.
-  @param {string} animationPostfixLeave - Animation CSS class postfix for leave event.
-  @param {boolean} enableTouch  - Adds touch event to show content on first click then follow link on the second click.
-  @param {integer} touchThreshold - Touch length must be less than this to trigger reveal which prevents the event triggering if user is scrolling.
+    @param {string} selector - Container element selector.
+    @param {string} itemSelector - Item element selector.
+    @param {string} animationName - Animation CSS class.
+    @param {string} animationPostfixEnter - Animation CSS class postfix for enter event.
+    @param {string} animationPostfixLeave - Animation CSS class postfix for leave event.
+    @param {boolean} enableTouch  - Adds touch event to show content on first click then follow link on the second click.
+    @param {integer} touchThreshold - Touch length must be less than this to trigger reveal which prevents the event triggering if user is scrolling.
 */
 
 const DirectionReveal = function({
@@ -23,6 +23,7 @@ const DirectionReveal = function({
   const containers = document.querySelectorAll(selector)
   let touchStart
 
+  // Utilities - https://hackernoon.com/rethinking-javascript-eliminate-the-switch-statement-for-better-code-5c81c044716d
   const addEventListenerMulti = function(element, events, fn) {
     events.forEach(e => element.addEventListener(e, fn))
   }

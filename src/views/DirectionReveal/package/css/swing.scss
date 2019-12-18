@@ -1,0 +1,127 @@
+$name: swing;
+$directions: top, bottom, left, right;
+$events: enter, leave;
+
+@each $direction in $directions {
+  .#{$name}--enter-#{$direction} {
+    .direction-reveal__anim--enter {
+      animation-name: #{$name}--enter-#{$direction};
+    }
+    .direction-reveal__anim--leave {
+      @if $direction == top {
+        animation-name: #{$name}--leave-bottom;
+      } @else if $direction == bottom {
+        animation-name: #{$name}--leave-top;
+      } @else if $direction == left {
+        animation-name: #{$name}--leave-right;
+      } @else if $direction == right {
+        animation-name: #{$name}--leave-left;
+      }
+    }
+  }
+  .#{$name}--leave-#{$direction} {
+    .direction-reveal__anim--enter {
+      animation-name: #{$name}--leave-#{$direction};
+    }
+    .direction-reveal__anim--leave {
+      @if $direction == top {
+        animation-name: #{$name}--enter-bottom;
+      } @else if $direction == bottom {
+        animation-name: #{$name}--enter-top;
+      } @else if $direction == left {
+        animation-name: #{$name}--enter-right;
+      } @else if $direction == right {
+        animation-name: #{$name}--enter-left;
+      }
+    }
+  }
+}
+
+.direction-reveal [class*='swing--'] {
+  perspective: 400px;
+}
+
+.direction-reveal [class*='swing--'] .direction-reveal__anim--enter, .direction-reveal [class*='swing--'] .direction-reveal__anim--leave {
+  transform: rotate3d(0, 0, 0, 0);
+  animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.swing--enter-top, .swing--leave-top {
+  perspective-origin: center top;
+}
+
+.swing--enter-top .direction-reveal__anim--enter, .swing--enter-top .direction-reveal__anim--leave, .swing--leave-top .direction-reveal__anim--enter, .swing--leave-top .direction-reveal__anim--leave {
+  transform-origin: center top;
+}
+
+.swing--enter-bottom, .swing--leave-bottom {
+  perspective-origin: center bottom;
+}
+
+.swing--enter-bottom .direction-reveal__anim--enter, .swing--enter-bottom .direction-reveal__anim--leave, .swing--leave-bottom .direction-reveal__anim--enter, .swing--leave-bottom .direction-reveal__anim--leave {
+  transform-origin: center bottom;
+}
+
+.swing--enter-left, .swing--leave-left {
+  perspective-origin: left center;
+}
+
+.swing--enter-left .direction-reveal__anim--enter, .swing--enter-left .direction-reveal__anim--leave, .swing--leave-left .direction-reveal__anim--enter, .swing--leave-left .direction-reveal__anim--leave {
+  transform-origin: left center;
+}
+
+.swing--enter-right, .swing--leave-right {
+  perspective-origin: right center;
+}
+
+.swing--enter-right .direction-reveal__anim--enter, .swing--enter-right .direction-reveal__anim--leave, .swing--leave-right .direction-reveal__anim--enter, .swing--leave-right .direction-reveal__anim--leave {
+  transform-origin: right center;
+}
+
+@keyframes swing--enter-top {
+  0% {
+    transform: rotate3d(-1, 0, 0, 90deg);
+  }
+}
+
+@keyframes swing--leave-top {
+  100% {
+    transform: rotate3d(-1, 0, 0, 90deg);
+  }
+}
+
+@keyframes swing--enter-bottom {
+  0% {
+    transform: rotate3d(1, 0, 0, 90deg);
+  }
+}
+
+@keyframes swing--leave-bottom {
+  100% {
+    transform: rotate3d(1, 0, 0, 90deg);
+  }
+}
+
+@keyframes swing--enter-left {
+  0% {
+    transform: rotate3d(0, 1, 0, 90deg);
+  }
+}
+
+@keyframes swing--leave-left {
+  100% {
+    transform: rotate3d(0, 1, 0, 90deg);
+  }
+}
+
+@keyframes swing--enter-right {
+  0% {
+    transform: rotate3d(0, -1, 0, 90deg);
+  }
+}
+
+@keyframes swing--leave-right {
+  100% {
+    transform: rotate3d(0, -1, 0, 90deg);
+  }
+}
