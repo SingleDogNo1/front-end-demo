@@ -1,4 +1,4 @@
-const allRouter = [
+const CSS_AND_JS_ROUTER = [
   {
     path: 'digital-clock',
     name: 'DigitalClock',
@@ -8,11 +8,6 @@ const allRouter = [
     path: 'animation-text',
     name: 'animationText',
     component: () => import(/* webpackChunkName: 'animationText' */ '@/views/AnimationText')
-  },
-  {
-    path: 'grid',
-    name: 'draggableGrid',
-    component: () => import(/* webpackChunkName: 'draggableGrid' */ '@/views/DraggableGrid')
   },
   {
     path: 'js-cube',
@@ -25,4 +20,4 @@ const allRouter = [
     component: () => import(/* webpackChunkName: 'direction-reveal' */ '@/views/DirectionReveal')
   }
 ]
-export default allRouter
+export default CSS_AND_JS_ROUTER
