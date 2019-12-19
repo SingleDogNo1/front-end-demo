@@ -62,6 +62,10 @@ const slideBarList = [
         routerName: 'DigitalClock'
       },
       {
+        title: '粒子时钟',
+        routerName: 'ParticleClock'
+      },
+      {
         title: '跟随鼠标的遮罩（一）',
         routerName: 'jsCube'
       },

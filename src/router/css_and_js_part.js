@@ -5,6 +5,11 @@ const CSS_AND_JS_ROUTER = [
     component: () => import(/* webpackChunkName: 'clock' */ '@/views/DigitalClock')
   },
   {
+    path: 'particle-clock',
+    name: 'ParticleClock',
+    component: () => import(/* webpackChunkName: 'ParticleClock' */ '@/views/ParticleClock')
+  },
+  {
     path: 'animation-text',
     name: 'animationText',
     component: () => import(/* webpackChunkName: 'animationText' */ '@/views/AnimationText')
