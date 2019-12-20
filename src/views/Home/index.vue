@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import slideBarList from '@/slideBarList'
+import slideBarList from '@/slideBarList/index.js'
 
 export default {
   name: 'home',

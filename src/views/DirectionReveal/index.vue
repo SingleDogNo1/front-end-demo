@@ -4,7 +4,7 @@
       <div class="separator">
         <h3>Swing</h3>
         <div class="direction-reveal demo-swing">
-          <template v-for="index in 3">
+          <template v-for="index in 8">
             <div :key="index" class="direction-reveal__card card-item" :tabindex="index">
               <img src="./1.jpg" alt="" />
               <div class="overlay direction-reveal__anim--enter">
@@ -19,7 +19,7 @@
       <div class="separator">
         <h3>Rotate</h3>
         <div class="direction-reveal demo-rotate">
-          <template v-for="index in 3">
+          <template v-for="index in 8">
             <div :key="index" class="direction-reveal__card card-item" :tabindex="index">
               <img src="./1.jpg" alt="" />
               <div class="overlay direction-reveal__anim--enter">
@@ -34,7 +34,7 @@
       <div class="separator">
         <h3>flip</h3>
         <div class="direction-reveal demo-flip">
-          <template v-for="index in 3">
+          <template v-for="index in 8">
             <div :key="index" class="direction-reveal__card card-item" :tabindex="index">
               <img src="./1.jpg" alt="" class="direction-reveal__anim--leave" />
               <div class="overlay direction-reveal__anim--enter">
@@ -49,7 +49,7 @@
       <div class="separator">
         <h3>slide</h3>
         <div class="direction-reveal demo-slide">
-          <template v-for="index in 3">
+          <template v-for="index in 8">
             <div :key="index" class="direction-reveal__card card-item" :tabindex="index">
               <img src="./1.jpg" alt="" />
               <div class="overlay direction-reveal__anim--enter">
@@ -64,7 +64,7 @@
       <div class="separator">
         <h3>slide Inverted</h3>
         <div class="direction-reveal demo-slide">
-          <template v-for="index in 3">
+          <template v-for="index in 8">
             <div :key="index" class="direction-reveal__card card-item" :tabindex="index">
               <img src="./1.jpg" alt="" />
               <div class="overlay direction-reveal__anim--leave">
@@ -79,7 +79,7 @@
       <div class="separator">
         <h3>slide &amp; Push</h3>
         <div class="direction-reveal demo-slide-push">
-          <template v-for="index in 3">
+          <template v-for="index in 8">
             <div :key="index" class="direction-reveal__card card-item" :tabindex="index">
               <img src="./1.jpg" alt="" class="direction-reveal__anim--leave" />
               <div class="overlay direction-reveal__anim--enter">
@@ -94,7 +94,7 @@
       <div class="separator">
         <h3>Roll out</h3>
         <div class="direction-reveal demo-roll-out">
-          <template v-for="index in 3">
+          <template v-for="index in 8">
             <div :key="index" class="direction-reveal__card card-item" :tabindex="index">
               <img src="./1.jpg" alt="" />
               <div class="overlay direction-reveal__anim--enter">
@@ -189,7 +189,7 @@ export default {
 .direction-wrapper {
   padding-top: 30px;
   .demo-inner {
-    width: 1000px;
+    width: 880px;
     margin: 0 auto;
     .separator {
       margin-bottom: 50px;
@@ -204,8 +204,8 @@ export default {
       justify-content: space-between;
     }
     .card-item {
-      width: 315px;
-      height: 315px;
+      @include square(200px);
+      margin: 10px;
     }
   }
 }

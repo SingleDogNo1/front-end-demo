@@ -171,12 +171,13 @@ export default {
       div {
         position: absolute;
         @include square();
-        transition: 0.6s;
+        font-size: 30px;
+        transition: 0.4s;
         transform-style: preserve-3d;
         transform: translateX(50px) rotateX(45deg) rotateZ(-45deg);
         &:nth-child(1) {
           background: #ace;
-          color: #333;
+          color: #fff;
           z-index: 99;
           text-align: center;
           line-height: 30vh;

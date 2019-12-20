@@ -1,4 +1,4 @@
-const VUE_COMPONENT_ROUTER = [
+const PLUGINS_ROUTER = [
   {
     path: 'grid',
     name: 'draggableGrid',
@@ -15,4 +15,4 @@ const VUE_COMPONENT_ROUTER = [
     component: () => import(/* webpackChunkName: 'isotope' */ '@/views/Isotope')
   }
 ]
-export default VUE_COMPONENT_ROUTER
+export default PLUGINS_ROUTER

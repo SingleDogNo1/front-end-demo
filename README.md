@@ -6,3 +6,13 @@
 ## vue2.x plugin
 
 - vue-piczoom
+
+## other plugins
+
+particle.js
+cropper.js
+
+## 好用的 jquery 插件，看看能不能重写
+
+- slicebox.js
+- jquery.eraser.js
