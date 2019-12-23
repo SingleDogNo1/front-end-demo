@@ -29,6 +29,14 @@ const jsRouter = [
       {
         title: '121种轮播效果',
         routerName: 'carousel'
+      },
+      {
+        title: '透镜效果',
+        routerName: 'perspective'
+      },
+      {
+        title: '其它方式的轮播',
+        routerName: 'specialCarousel'
       }
     ]
   }

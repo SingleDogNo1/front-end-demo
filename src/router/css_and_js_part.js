@@ -1,9 +1,4 @@
-const jsRouter = [
-  {
-    path: 'calculator',
-    name: 'calculator',
-    component: () => import(/* webpackChunkName: 'calculator' */ '@/views/Calculator')
-  },
+const CSS_AND_JS_ROUTER = [
   {
     path: 'digital-clock',
     name: 'DigitalClock',
@@ -28,21 +23,6 @@ const jsRouter = [
     path: 'direction-reveal',
     name: 'directionReveal',
     component: () => import(/* webpackChunkName: 'direction-reveal' */ '@/views/DirectionReveal')
-  },
-  {
-    path: 'carousel',
-    name: 'carousel',
-    component: () => import(/* webpackChunkName: 'carousel' */ '@/views/Carousel')
-  },
-  {
-    path: 'perspective',
-    name: 'perspective',
-    component: () => import(/* webpackChunkName: 'perspective' */ '@/views/Perspective')
-  },
-  {
-    path: 'special-carousel',
-    name: 'specialCarousel',
-    component: () => import(/* webpackChunkName: 'specialCarousel' */ '@/views/SpecialCarousel')
   }
 ]
-export default jsRouter
+export default CSS_AND_JS_ROUTER
