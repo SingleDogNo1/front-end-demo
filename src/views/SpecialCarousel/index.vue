@@ -2,7 +2,7 @@
   <div class="carousel">
     <el-button-group class="ctrl-wrapper">
       <el-button @click="explode">爆炸</el-button>
-      <el-button>翻转</el-button>
+      <el-button @click="tile">翻转</el-button>
       <el-button>扭曲</el-button>
       <el-button>立方体</el-button>
       <el-button>翻页</el-button>
@@ -41,6 +41,7 @@ export default {
   },
   watch: {},
   methods: {
+    // 爆炸
     explode() {
       if (!this.ready) return
       this.ready = false
@@ -59,7 +60,7 @@ export default {
           newDiv.style.position = 'absolute'
           newDiv.style.width = Math.ceil(this.width / C) + 'px'
           newDiv.style.height = Math.ceil(this.height / R) + 'px'
-          newDiv.style.background = `url(${this.imagesList[this.next]}) -${aData[i].left}px -${
+          newDiv.style.background = `url(${this.imagesList[this.current]}) -${aData[i].left}px -${
             aData[i].top
           }px no-repeat`
           newDiv.style.left = aData[i].left + 'px'
@@ -132,6 +133,69 @@ export default {
             })(newDiv, l, t),
             Utils.rnd(0, 200)
           )
+        }
+      }
+    },
+    tile() {
+      if (!this.ready) return
+      this.ready = false
+      const [R, C] = [3, 6]
+      let wait = R * C
+      let [dw, dh] = [Math.ceil(this.width / C), Math.ceil(this.height / R)]
+      this.imgWrapper.style.background = 'none'
+      for (let i = 0; i < C; i++) {
+        for (let j = 0; j < R; j++) {
+          let newDiv = document.createElement('div')
+          let t = Math.ceil((this.height * j) / R)
+          let l = Math.ceil((this.width * i) / C)
+          Utils.setStyle(newDiv, {
+            position: 'absolute',
+            background: `url(${this.imagesList[this.current]}) -${l}px -${t}px no-repeat`,
+            left: l + 'px',
+            top: t + 'px',
+            width: dw + 'px',
+            height: dh + 'px'
+          })
+          const $this = this
+          ;(function(newDiv, l, t) {
+            newDiv.ch = false
+            setTimeout(() => {
+              fx.linear(
+                newDiv,
+                { y: 0 },
+                { y: 180 },
+                now => {
+                  if (now.y > 90 && !newDiv.ch) {
+                    newDiv.ch = true
+                    newDiv.style.background = `url(${
+                      $this.imagesList[$this.next]
+                    }) -${l}px -${t}px no-repeat`
+                  }
+                  if (now.y > 90) {
+                    Utils.setStyle3(
+                      newDiv,
+                      'transform',
+                      'perspective(500px) rotateY(' + now.y + 'deg) scale(-1,1)'
+                    )
+                  } else {
+                    Utils.setStyle3(
+                      newDiv,
+                      'transform',
+                      'perspective(500px) rotateY(' + now.y + 'deg)'
+                    )
+                  }
+                },
+                () => {
+                  if (--wait == 0) {
+                    $this.ready = true
+                    $this.current = $this.next
+                  }
+                },
+                22
+              )
+            }, (i + j) * 200)
+          })(newDiv, l, t)
+          this.imgWrapper.appendChild(newDiv)
         }
       }
     }
