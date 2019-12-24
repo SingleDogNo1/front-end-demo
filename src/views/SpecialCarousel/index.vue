@@ -3,9 +3,9 @@
     <el-button-group class="ctrl-wrapper">
       <el-button @click="explode">爆炸</el-button>
       <el-button @click="tile">翻转</el-button>
-      <el-button>扭曲</el-button>
-      <el-button>立方体</el-button>
-      <el-button>翻页</el-button>
+      <el-button @click="bars">扭曲</el-button>
+      <el-button @click="cube">立方体</el-button>
+      <el-button @click="turn">翻页</el-button>
     </el-button-group>
     <div ref="wrapper" class="images" :style="background"></div>
   </div>
@@ -136,6 +136,7 @@ export default {
         }
       }
     },
+    // 翻转
     tile() {
       if (!this.ready) return
       this.ready = false
@@ -198,9 +199,240 @@ export default {
           this.imgWrapper.appendChild(newDiv)
         }
       }
+    },
+    // 扭曲
+    bars() {
+      if (!this.ready) return
+      const $this = this
+      this.ready = false
+      const C = 7
+      let wait = C
+      let dw = Math.ceil(this.width / C)
+      this.imgWrapper.style.background = 'none'
+      for (let i = 0; i < C; i++) {
+        const newDiv = document.createElement('div')
+        Utils.setStyle(newDiv, {
+          width: dw + 'px',
+          height: '100%',
+          position: 'absolute',
+          left: (this.width * i) / C + 'px',
+          top: 0
+        })
+        Utils.setStyle3(newDiv, 'transformStyle', 'preserve-3d')
+        Utils.setStyle3(newDiv, 'transform', 'perspective(1000px) rotateX(0deg)')
+        ;(function(newDiv, i) {
+          newDiv.style.zIndex = C / 2 - Math.abs(i - C / 2)
+          setTimeout(() => {
+            fx.buffer(
+              newDiv,
+              { a: 0, x: 0 },
+              { a: 100, x: -90 },
+              now => {
+                Utils.setStyle3(
+                  newDiv,
+                  'transform',
+                  `perspective(1000px) rotateY(${(3 * (i - C / 2) * (50 - Math.abs(now.a - 50))) /
+                    50}deg) rotateX(${now.x}deg)`
+                )
+              },
+              () => {
+                if (--wait === 0) {
+                  $this.ready = true
+                }
+                $this.current = $this.next
+              },
+              8
+            )
+          }, (i + 1) * 130)
+        })(newDiv, i)
+        newDiv.innerHTML = '<div></div><div></div><div></div><div></div>'
+        let oNext = newDiv.getElementsByTagName('div')[0]
+        let oNow = newDiv.getElementsByTagName('div')[1]
+        let oBack = newDiv.getElementsByTagName('div')[2]
+        let oBack2 = newDiv.getElementsByTagName('div')[3]
+        Utils.setStyle([oNext, oNow, oBack, oBack2], {
+          width: '100%',
+          height: '100%',
+          position: 'absolute',
+          left: 0,
+          top: 0
+        })
+        Utils.setStyle(oNext, {
+          background: `url(${$this.imagesList[$this.next]}) ${(-$this.width * i) / C}px 0 no-repeat`
+        })
+        Utils.setStyle3(
+          oNext,
+          'transform',
+          'scale3d(0.836,0.836,0.836) rotateX(90deg) translateZ(' + $this.height / 2 + 'px)'
+        )
+        Utils.setStyle(oNow, {
+          background: `url(${$this.imagesList[$this.current]}) ${(-$this.width * i) /
+            C}px 0 no-repeat`
+        })
+        Utils.setStyle3(
+          oNow,
+          'transform',
+          'scale3d(0.834,0.834,0.834) rotateX(0deg) translateZ(' + $this.height / 2 + 'px)'
+        )
+        Utils.setStyle(oBack, {
+          background: '#666'
+        })
+        Utils.setStyle3(
+          oBack,
+          'transform',
+          'scale3d(0.834,0.834,0.834) rotateX(0deg) translateZ(-' + $this.height / 2 + 'px)'
+        )
+        Utils.setStyle(oBack2, {
+          background: '#666'
+        })
+        Utils.setStyle3(
+          oBack2,
+          'transform',
+          'scale3d(0.834,0.834,0.834) rotateX(90deg) translateZ(-' + $this.height / 2 + 'px)'
+        )
+        this.imgWrapper.appendChild(newDiv)
+      }
+    },
+    // 立方体
+    cube() {
+      if (!this.ready) return
+      const $this = this
+      this.ready = false
+      this.imgWrapper.style.background = 'none'
+      Utils.setStyle3(this.imgWrapper, 'transformStyle', 'preserve-3d')
+      Utils.setStyle3(this.imgWrapper, 'transform', 'perspective(1000px) rotateY(0deg)')
+      var oNow = document.createElement('div')
+      var oNext = document.createElement('div')
+      Utils.setStyle([oNow, oNext], {
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        left: 0,
+        top: 0
+      })
+      Utils.setStyle3(
+        oNow,
+        'transform',
+        `scale3d(0.741,0.741,0.741) rotate3d(0,1,0,0deg) translate3d(0,0,${this.width / 2}px)`
+      )
+      Utils.setStyle3(
+        oNext,
+        'transform',
+        `scale3d(0.741,0.741,0.741) rotate3d(0,1,0,90deg) translate3d(0,0,${this.width / 2}px)`
+      )
+      this.imgWrapper.appendChild(oNext)
+      this.imgWrapper.appendChild(oNow)
+      oNow.style.background = 'url(' + this.imagesList[this.current] + ') center no-repeat'
+      oNext.style.background = 'url(' + this.imagesList[this.next] + ') center no-repeat'
+      setTimeout(() => {
+        fx.flex(
+          $this.imgWrapper,
+          { y: 0 },
+          { y: -90 },
+          now => {
+            Utils.setStyle3(
+              $this.imgWrapper,
+              'transform',
+              'perspective(1000px) rotateY(' + now.y + 'deg)'
+            )
+          },
+          () => {
+            const oDiv = $this.imgWrapper
+            Utils.setStyle3(oDiv, 'transition', 'none')
+            Utils.setStyle3(oDiv, 'transformStyle', 'flat')
+            Utils.setStyle3(oDiv, 'transform', 'none')
+            oDiv.innerHTML = ''
+            oDiv.style.background = 'url(' + $this.imagesList[$this.next] + ') center no-repeat'
+            $this.current = $this.next
+            $this.ready = true
+          },
+          10,
+          0.6
+        )
+      }, 0)
+    },
+    // 翻页
+    turn() {
+      if (!this.ready) return
+      const $this = this
+      this.ready = false
+      this.imgWrapper.style.background = `url(${this.imagesList[this.next]}) center no-repeat`
+      const oDivPage = document.createElement('div')
+      Utils.setStyle(oDivPage, {
+        position: 'absolute',
+        background: `url(${this.imagesList[this.next]}) right no-repeat`,
+        zIndex: 3,
+        left: '50%',
+        top: 0,
+        width: '50%',
+        height: '100%',
+        overflow: 'hidden'
+      })
+      Utils.setStyle3(oDivPage, 'transform', 'perspective(1000px) rotateY(0deg)')
+      Utils.setStyle3(oDivPage, 'transformOrigin', 'left')
+      this.imgWrapper.appendChild(oDivPage)
+      const oDivOld = document.createElement('div')
+      Utils.setStyle(oDivOld, {
+        position: 'absolute',
+        left: 0,
+        top: 0,
+        width: '50%',
+        height: '100%',
+        zIndex: 2,
+        background: `url(${this.imagesList[this.current]}) left no-repeat`
+      })
+      this.imgWrapper.appendChild(oDivOld)
+      var oDivShadow = document.createElement('div')
+      Utils.setStyle(oDivShadow, {
+        position: 'absolute',
+        right: 0,
+        top: 0,
+        width: '50%',
+        height: '100%',
+        zIndex: 2,
+        background: 'rgba(0,0,0,1)'
+      })
+      this.imgWrapper.appendChild(oDivShadow)
+      oDivPage.ch = false
+      fx.buffer(
+        oDivPage,
+        { y: 0, opacity: 1 },
+        { y: -180, opacity: 0 },
+        now => {
+          if (now.y < -90 && !oDivPage.ch) {
+            oDivPage.ch = true
+            oDivPage.innerHTML = '<img />'
+            var oImg = oDivPage.getElementsByTagName('img')[0]
+            oImg.src = $this.imagesList[$this.next]
+            Utils.setStyle3(oImg, 'transform', 'scaleX(-1)')
+            Utils.setStyle(oImg, {
+              position: 'absolute',
+              right: 0,
+              top: 0,
+              width: '200%',
+              height: '100%'
+            })
+            Utils.setStyle3(oDivPage, 'transformOrigin', 'left')
+          }
+          if (now.y < -90) {
+            Utils.setStyle3(
+              oDivPage,
+              'transform',
+              'perspective(1000px) scale(-1,1) rotateY(' + (180 - now.y) + 'deg)'
+            )
+          } else {
+            Utils.setStyle3(oDivPage, 'transform', 'perspective(1000px) rotateY(' + now.y + 'deg)')
+          }
+          oDivShadow.style.background = 'rgba(0,0,0,' + now.opacity + ')'
+        },
+        () => {
+          $this.current = $this.next
+          $this.ready = true
+        },
+        14
+      )
     }
   },
-  created() {},
   mounted() {
     this.$nextTick(() => {
       const wrapper = this.$refs.wrapper

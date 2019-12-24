@@ -13,6 +13,11 @@ const PLUGINS_ROUTER = [
     path: 'isotope',
     name: 'isotope',
     component: () => import(/* webpackChunkName: 'isotope' */ '@/views/Isotope')
+  },
+  {
+    path: 'calendar',
+    name: 'calendar',
+    component: () => import(/* webpackChunkName: 'calendar' */ '@/views/Calendar')
   }
 ]
 export default PLUGINS_ROUTER

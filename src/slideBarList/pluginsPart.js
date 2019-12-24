@@ -13,6 +13,10 @@ const pluginsRouter = [
       {
         title: '分类 && 排序插件',
         routerName: 'isotope'
+      },
+      {
+        title: '日历插件',
+        routerName: 'calendar'
       }
     ]
   }
