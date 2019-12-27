@@ -206,6 +206,9 @@ export default {
     .card-item {
       @include square(200px);
       margin: 10px;
+      img {
+        width: 100%;
+      }
     }
   }
 }

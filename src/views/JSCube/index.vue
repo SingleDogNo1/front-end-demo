@@ -192,6 +192,9 @@ $size: 180px;
     .front {
       overflow: hidden;
       transform: translate3d(0, 0, 0);
+      img {
+        width: 100%;
+      }
     }
     .overlay {
       background: linear-gradient(to bottom, #fdbb5a, #db5726);

@@ -208,6 +208,7 @@ export default {
         transition: 0.4s;
         img {
           position: absolute;
+          width: 100%;
           top: 0;
           transform: translateZ(100px);
           transition: 0.6s;
