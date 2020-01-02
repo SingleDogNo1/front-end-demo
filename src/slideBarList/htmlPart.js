@@ -7,6 +7,15 @@ const htmlRouter = [
         routerName: 'html5Draggable'
       }
     ]
+  },
+  {
+    template: 'svg',
+    list: [
+      {
+        title: 'svg练习',
+        routerName: 'svgTest'
+      }
+    ]
   }
 ]
 export default htmlRouter
