@@ -43,6 +43,11 @@ const jsRouter = [
     path: 'special-carousel',
     name: 'specialCarousel',
     component: () => import(/* webpackChunkName: 'specialCarousel' */ '@/views/SpecialCarousel')
+  },
+  {
+    path: 'gallery',
+    name: 'gallery',
+    component: () => import(/* webpackChunkName: 'galleryA' */ '@/views/Gallery')
   }
 ]
 export default jsRouter

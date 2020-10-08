@@ -38,6 +38,11 @@ const cssRouter = [
     path: 'font-animate',
     name: 'fontAnimate',
     component: () => import(/* webpackChunkName: 'fontAnimate' */ '@/views/FontAnimate')
+  },
+  {
+    path: 'taiji',
+    name: 'TaiJi',
+    component: () => import(/* webpackChunkName: 'taiji */ '@/views/TaiJi')
   }
 ]
 export default cssRouter

@@ -37,6 +37,10 @@ const jsRouter = [
       {
         title: '其它方式的轮播',
         routerName: 'specialCarousel'
+      },
+      {
+        title: '图片画廊',
+        routerName: 'gallery'
       }
     ]
   }

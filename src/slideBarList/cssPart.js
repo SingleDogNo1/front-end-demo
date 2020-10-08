@@ -33,6 +33,10 @@ const cssRouter = [
       {
         title: '几种文字出现的效果',
         routerName: 'fontAnimate'
+      },
+      {
+        title: '太极',
+        routerName: 'TaiJi'
       }
     ]
   }
